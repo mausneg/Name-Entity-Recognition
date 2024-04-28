@@ -2,10 +2,12 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 import numpy as np
+import pandas as pd
 
 X_MAXLEN = 104
 TRUNCATING = 'post'
 PADDING = 'post'
+df_val = pd.read_csv('dataset/val.csv')
 
 def predict_NER(sentence):
     x_seq = x_tokenizer.texts_to_sequences([sentence])
@@ -32,7 +34,7 @@ if __name__ == '__main__':
     with open('y_tokenizer.pickle', 'rb') as handle:
         y_tokenizer = pickle.load(handle)
 
-    sentence = "Apple Inc. is planning to open a new store in San Francisco. The store will be opened by the end of 2022. The CEO, Tim Cook, said that this will be the largest store in California."
+    sentence = df_val.iloc[20]['Sentence']
     predicted_sentence = predict_NER(sentence)
     print(sentence)
     print(predicted_sentence)
