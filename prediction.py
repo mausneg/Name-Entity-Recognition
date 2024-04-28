@@ -20,7 +20,7 @@ def predict_NER(sentence):
     prediciton = []
     print('Length of sentence:', len(split_sentence))
     for i in range(len(split_sentence)):
-        if y_pred[i] != 'o':
+        if y_pred[i] != 'O':
             prediciton.append((y_pred[i]))
         else:
             prediciton.append((split_sentence[i]))
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     with open('y_tokenizer.pickle', 'rb') as handle:
         y_tokenizer = pickle.load(handle)
 
-    sentence = df_val.iloc[20]['Sentence']
+    sentence = df_val.iloc[1]['Sentence']
     predicted_sentence = predict_NER(sentence)
     print(sentence)
     print(predicted_sentence)
