@@ -7,7 +7,6 @@ import pandas as pd
 X_MAXLEN = 104
 TRUNCATING = 'post'
 PADDING = 'post'
-df_val = pd.read_csv('dataset/val.csv')
 
 def predict_NER(sentence):
     x_seq = x_tokenizer.texts_to_sequences([sentence])
@@ -34,7 +33,7 @@ if __name__ == '__main__':
     with open('y_tokenizer.pickle', 'rb') as handle:
         y_tokenizer = pickle.load(handle)
 
-    sentence = df_val.iloc[1]['Sentence']
+    sentence = "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services. It was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne in April 1976."
     predicted_sentence = predict_NER(sentence)
     print(sentence)
     print(predicted_sentence)
